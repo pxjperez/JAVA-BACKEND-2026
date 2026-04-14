@@ -1,0 +1,100 @@
+{
+  "info": {
+    "_postman_id": "b4cea1e7-ad78-45d7-ade5-93b0bf11eb6f",
+    "name": "jbc6",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "4908897",
+    "_collection_link": "https://go.postman.co/collection/4908897-b4cea1e7-ad78-45d7-ade5-93b0bf11eb6f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "generarToken",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "authorization_code",
+              "type": "text",
+              "uuid": "8c4b75a4-1582-48e9-bd97-f3007027a9c6"
+            },
+            {
+              "key": "code",
+              "value": "Xaf9Ktnfas-Bn1jd6MWnwarJm-V8Yx1kUYaW7Cpmzh9ZqFOVlgI-cWQHfSR8Fr1BRTb1PRwCx0M1sBe_ibXhEut6__2CZVL9K18kbq4KgvtZli0zbxuh5itHG9flsvIA",
+              "type": "text",
+              "uuid": "19d40cda-5cf6-4337-8e7d-59ce35d31fdc"
+            },
+            {
+              "key": "client_id",
+              "value": "admin",
+              "type": "text",
+              "uuid": "ce34363b-13f1-4aa0-8a89-c4fc6ffbbe48"
+            },
+            {
+              "key": "client_secret",
+              "value": "admin",
+              "type": "text",
+              "uuid": "5753b276-f753-4183-a2e7-85e024910dfa"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "https://oauthdebugger.com/debug",
+              "type": "text",
+              "uuid": "3f89d471-bfa8-476e-8f69-513c7af8d5ca"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/oauth2/token",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "oauth2",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "probarToken",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJraWQiOiJiMWRlMjZlMC1lNTc2LTRjNTUtYWI0Ny01NWZkMWQ2NTUzYWQiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJqcGVyZXpnaWwiLCJhdWQiOiJhZG1pbiIsIm5iZiI6MTc3MjI5MDM3Mywic2NvcGUiOlsib3BlbmlkIl0sImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MCIsImV4cCI6MTc3MjM3Njc3MywiaWF0IjoxNzcyMjkwMzczLCJqdGkiOiJjMWQ2NjkwNy1kOTBlLTQwNGUtOTY4ZC1iYmZmOTViMmRlMDIifQ.C9iYUvbUkN7Yi3xZfGr3dhRj2ijqf3tnEYo2tzpU_92jwAm5bwSGPTL1C8J2LB-119iX8iHKsaMUvh_FQHBobsJBqt1q_03wcVc0x5Oe5oDqEZA449QB2tqvJFTdDp4-8eVjFTCb-UnUOI2FSHRYSZ8DDjTJ2aQ20hqQ6_fYPLVTFbS-yb7FM4FSFNlCAv3rXQL7syoxA03Ixcfpp-ePq6u-jrydEtbKJvhObaaG-gxQeSLAOc9Kx0E3E5Op70AZEwm-NdAPODaHSsHSIoPgJsGxGz3x5EcmEBs0YFujm-CQqqY4JnzpXcrP1KjaCBKpXwNFFsVy33JJmOSykw6ShQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuarios",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "usuarios"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

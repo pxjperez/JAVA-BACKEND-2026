@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Formulario Matricula</title>
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1 th:text="${titulo}"></h1>
+            <form th:action="@{registrarMatricula}" method="post" th:object="${matriculaBean}" enctype="multipart/form-data"> 
+                <table>
+                    <tr>
+                        <td>
+                            <label for="idUsuario">Usuario</label>
+                        </td>
+                        <td>
+                            <input type="hidden" th:field="*{idMatricula}"/>
+                            <select th:field="*{usuario.idUsuario}">
+                                <option value="">-SELECCIONAR-</option>
+                                <option th:each="usu: ${listaUsuarios}" th:value="${usu.idUsuario}" th:text="${usu.nombreCompleto}"></option>
+                            </select>
+                            <span th:if="${#fields.hasErrors('usuario.idUsuario')}" th:errors="*{usuario.idUsuario}" style="color:red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="idCurso">Curso</label>
+                        </td>
+                        <td>
+                            <select th:field="*{curso.idCurso}">
+                                <option value="">-SELECCIONAR-</option>
+                                <option th:each="cur: ${listaCursos}" th:value="${cur.idCurso}" th:text="${cur.nombreCurso}"></option>
+                            </select>
+                            <span th:if="${#fields.hasErrors('curso.idCurso')}" th:errors="*{curso.idCurso}" style="color:red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="fechaMatricula">Fecha Matricula</label>
+                        </td>
+                        <td>
+                            <input type="date" th:field="*{fechaMatricula}"/>
+                            <span th:if="${#fields.hasErrors('fechaMatricula')}" th:errors="*{fechaMatricula}" style="color:red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="estado">Estado</label>
+                        </td>
+                        <td>
+                            <select th:field="*{estado}">
+                                <option value="">-SELECCIONAR-</option>
+                                <option value="0">Inscrito</option>
+                                <option value="1">Pagado</option>
+                            </select>
+                            <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" style="color:red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="GRABAR" class="btn btn-primary"/>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    <label style="color: red" th:text="${msgError}"></label>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema de Matrícula</title>
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="css/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="text-center mb-4"><i class="bi bi-person-badge"></i> Sistema de Matrícula</h1>
+                        <form method="POST" action="/actionLogin">
+                            <div class="mb-3">
+                                <label for="user" class="form-label"><i class="bi bi-person"></i> Usuario</label>
+                                <input type="text" class="form-control" id="user" name="user" required>
+                            </div>            
+                            <div class="mb-3">
+                                <label for="password" class="form-label"><i class="bi bi-lock"></i> Contraseña</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>            
+                            <button type="submit" class="btn btn-primary w-100"><i class="bi bi-box-arrow-in-right"></i> Ingresar</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <p th:text="${msgError}" style="color: red;"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="js/jquery-4.0.0.min.js"></script>
+    <!-- Bootstrap JS -->    
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>    
+</body>
+</html>

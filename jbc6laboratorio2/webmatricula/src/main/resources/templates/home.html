@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bienvenida</title>
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-icons.min.css">
+    </head>
+    <body>
+        <div class="container text-center">
+                <h1>¡Bienvenido!</h1>
+                <!--
+                <p class="username" th:text="${usuario.nombreCompleto}"></p>
+                <p class="text-center" th:text="${mensajeBienvenida}"></p>
+                -->
+                <a th:href="@{'admin/mantenimientoUsuarios'}" class="btn btn-primary">MANTENIMIENTO USUARIO</a>
+                <a th:href="@{'admin/mantenimientoCursos'}" class="btn btn-primary">MANTENIMIENTO CURSOS</a>
+                <a th:href="@{'admin/mantenimientoMatricula'}" class="btn btn-primary">MANTENIMIENTO MATRICULA</a>
+                <br><br><br>
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" style="width: 200px;">Cerrar sesión</button>
+                </form>
+        </div>
+        <script type="text/javascript"  src="js/jquery-4.0.0.min.js"></script>
+        <script type="text/javascript"  src="js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript"  src="js/popper.min.js"></script>
+        <script type="text/javascript"  src="js/bootstrap.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          oauth-client:
+            provider: oauth-server
+            client-id: admin
+            client-secret: admin
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://localhost:8080/authorized"
+            client-name: oauth-client
+            scope: openid,profile,read,write
+        provider:
+          oauth-server:
+            issuer-uri: http://localhost:8080

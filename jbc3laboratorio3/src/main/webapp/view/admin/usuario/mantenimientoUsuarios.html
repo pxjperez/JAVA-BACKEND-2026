@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>MANTENIMIENTO USUARIOS</title>
+        <link rel="stylesheet" type="text/css" href="static/css/estilos.css">
+        <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="static/css/bootstrap-icons.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>MANTENIMIENTO USUARIOS</h1>
+            <form th:action="@{'buscarUsuario'}" method="get">
+                <label>Buscar por User:</label>
+                <div class="grid text-center" style="--bs-columns: 10; --bs-gap: 1rem;">
+                    <div class="g-col-6"><input type="text" name="user" /></div>
+                    <div class="g-col-4"><input type="submit" value="Buscar" /></div>
+               </div>
+            </form>
+            <br>
+            <table  class="table table-bordered">
+                <thead>
+                    <tr class="table-dark">
+                        <th>ID USUARIO</th>
+                        <th>NOMBRES COMPLETOS <a th:href="@{mantenimientoUsuarios(pag=0,orden=nombreCompleto)}"><i class="bi bi-tsunami"></i></a></th>
+                        <th>USER</th>
+                        <th>FOTO</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="usuario : ${listaUsuarios}">
+                        <td th:text="${usuario.idUsuario}"></td>
+                        <td th:text="${usuario.nombreCompleto}"></td>
+                        <td th:text="${usuario.user}"></td>
+                        <td>
+                            <img th:if="${usuario.foto != null}" width="50px" height="50px" th:src="@{${usuario.fotoString}} " alt="Sin foto" /> 
+                            <label th:if="${usuario.foto == null}">Sin foto</label>
+                        </td>
+                        <td>
+                            <a th:href="@{'elinarUsuario?idUsuario=' + ${usuario.idUsuario} }" onclick="return confirm('¿Estás seguro de que quieres eliminar?');"><i class="bi bi-trash"></i></a> 
+                            <a th:href="@{'formularioActualizarUsuario?idUsuario=' + ${usuario.idUsuario} }" ><i class="bi bi-pencil"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav aria-label="Page">
+                <ul class="pagination">
+                    <th:block th:each="pageNun:${#numbers.sequence(1,cantidadPaginas)}">
+                        <li class="page-item active" th:if="${ (#strings.toString(pageNun-1) == (param.pag==null?'0':#strings.toString(param.pag)))}">
+                            <a class="page-link" th:href="@{mantenimientoUsuarios(pag=${pageNun-1},orden=${param.orden})}" th:text="${pageNun}"></a>
+                        </li>
+                        <li class="page-item" th:unless="${ (#strings.toString(pageNun-1) == (param.pag==null?'0':#strings.toString(param.pag)))}">
+                            <a class="page-link" th:href="@{mantenimientoUsuarios(pag=${pageNun-1},orden=${param.orden})}" th:text="${pageNun}"></a>
+                        </li>
+                    </th:block>
+                </ul>
+            </nav>
+            <label style="color: red" th:text="${param.msgError}"></label>
+            <label style="color: blue" th:text="${param.msgExito}"></label>
+            <h3><a th:href="@{'formularioNuevoUsuario'}" class="btn btn-primary">Nuevo Usuario</a></h3>
+        </div>
+        <script type="text/javascript"  src="static/js/jquery-4.0.0.min.js"></script>
+        <script type="text/javascript"  src="static/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript"  src="static/js/popper.min.js"></script>
+        <script type="text/javascript"  src="static/js/bootstrap.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenimiento de Usuarios</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/all.min.css" rel="stylesheet">
+    <link href="../css/estilos.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container-main {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .table-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .btn-icon {
+            margin: 0 3px;
+        }
+        .header-section {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-main">
+        <div class="header-section">
+            <h1><i class="fas fa-users"></i> Mantenimiento de Usuarios</h1>
+            <button class="btn btn-success" id="btnAgregarUsuario">
+                <i class="fas fa-plus"></i> Nuevo Usuario
+            </button>
+        </div>
+
+        <div class="table-container">
+            <table class="table table-hover" id="usuariosTable">
+                <thead class="table-dark">
+                    <tr>
+                        <th><i class="fas fa-user"></i> ID</th>
+                        <th><i class="fas fa-envelope"></i> USUARIO</th>
+                        <th><i class="fas fa-lock"></i>NOMBRES</th>
+                        <th><i class="fas fa-calendar"></i>ESTADO</th>
+                        <th><i class="fas fa-cogs"></i> Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="usuario : ${listaUsuarios}">
+                        <td th:text="${usuario.idUsuario}">ID</td>
+                        <td th:text="${usuario.user}">USUARIO</td>
+                        <td><span class="badge bg-info" th:text="${usuario.nombreApellido}">NOMBRES</span></td>
+                        <td th:text="${usuario.estadoString}">ESTADO</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary btn-icon" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a th:href="@{eliminarUsuario(idUsuario=${usuario.idUsuario})}" class="btn btn-sm btn-danger btn-icon" title="Eliminar">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="../js/jquery-4.0.0.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

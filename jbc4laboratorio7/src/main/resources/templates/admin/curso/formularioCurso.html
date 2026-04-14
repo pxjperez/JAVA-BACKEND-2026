@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Formulario Curso</title>
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1 th:text="${titulo}"></h1>
+            <form th:action="@{registrarCurso}" method="post" th:object="${cursoBean}" enctype="multipart/form-data"> 
+                <table>
+                    <tr>
+                        <td>
+                            <label for="nombreCurso">Nombre Curso</label>
+                        </td>
+                        <td>
+                            <input type="hidden" th:field="*{idCurso}"/>
+                            <input type="text" th:field="*{nombreCurso}"/>
+                            <span th:if="${#fields.hasErrors('nombreCurso')}" th:errors="*{nombreCurso}" style="color:red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="fechaInicio">Fecha Inicio</label>
+                        </td>
+                        <td>
+                            <input type="date" th:field="*{fechaInicio}"/>
+                            <span th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}" style="color:red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="alumnosMinimo">Alumnos Minimo</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{alumnosMinimo}"/>
+                            <span th:if="${#fields.hasErrors('alumnosMinimo')}" th:errors="*{alumnosMinimo}" style="color:red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="alumnosActual">Alumnos Actual</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{alumnosActual}"/>
+                            <span th:if="${#fields.hasErrors('alumnosActual')}" th:errors="*{alumnosActual}" style="color:red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="estado">Estado</label>
+                        </td>
+                        <td>
+                            <select th:field="*{estado}">
+                                <option value="">-SELECCIONAR-</option>
+                                <option value="0">DESHABILITADO</option>
+                                <option value="1">CREADO</option>
+                                <option value="2">EN PROCESO DE VENTA</option>
+                                <option value="3">COMPLETO</option>
+                            </select>
+                            <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" style="color:red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="GRABAR" class="btn btn-primary"/>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    <label style="color: red" th:text="${msgError}"></label>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

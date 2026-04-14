@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenida</title>
+    <link rel="stylesheet" type="text/css" href="static/css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>¡Bienvenido!</h1>
+        <p class="username" th:text="${usuario.nombreCompleto}"></p>
+        <p>Has iniciado sesión correctamente.</p>
+        <a th:href="@{'mantenimientoUsuarios'}" class="btn btn-primary">MANTENIMIENTO USUARIO</a>
+        <a th:href="@{'mantenimientoCursos'}" class="btn btn-primary">MANTENIMIENTO CURSOS</a>
+        <a th:href="@{'mantenimientoMatricula'}" class="btn btn-primary">MANTENIMIENTO MATRICULA</a>
+        <br><br>
+        <a th:href="@{'mantenimientoMatriculaPersonalizada'}" class="btn btn-primary">MANTENIMIENTO MATRICULA PERSONALIZADA</a>
+        <a th:href="@{'mantenimientoMatriculaPersonalizadaNativa'}" class="btn btn-primary">MANTENIMIENTO MATRICULA PERSONALIZADA NATIVA</a>
+    </div>
+    <script type="text/javascript"  src="static/js/jquery-4.0.0.min.js"></script>
+    <script type="text/javascript"  src="static/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript"  src="static/js/popper.min.js"></script>
+    <script type="text/javascript"  src="static/js/bootstrap.min.js"></script>
+</body>
+</html>

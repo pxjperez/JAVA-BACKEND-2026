@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Define your beans here -->
+    <bean id="holaMundo" class="edu.cibertec.utility.HolaMundo" 
+    init-method="imprimirAlInicializar" destroy-method="imprimirAlDestruir" scope="singleton" ></bean>
+
+    <bean id="holaMundoConPropiedad" class="edu.cibertec.utility.HolaMundo">
+        <property name="nombre" value="JUAN CARLOS XML"></property>
+    </bean>
+
+    <bean id="documentoRepositoryWord" class="edu.cibertec.repository.impl.DocumentoRepositoryWord"></bean>
+    <bean id="documentoService" class="edu.cibertec.service.impl.DocumentoServiceImpl">
+        <property name="documentoRepository" ref="documentoRepositoryWord"></property>
+    </bean>
+</beans>

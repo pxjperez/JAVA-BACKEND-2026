@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>MANTENIMIENTO CURSOS</title>
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-icons.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>MANTENIMIENTO CURSOS</h1>
+            <br>
+            <table  class="table table-bordered">
+                <thead>
+                    <tr class="table-dark">
+                        <th>ID CURSO</th>
+                        <th>NOMBRE CURSO</th>
+                        <th>FECHA INICIO</th>
+                        <th>ALUMNOS MINIMO</th>
+                        <th>ALUMNOS ACTUAL</th>
+                        <th>ESTADO</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="curso : ${listaCursos}">
+                        <td th:text="${curso.idCurso}"></td>
+                        <td th:text="${curso.nombreCurso}"></td>
+                        <td th:text="${curso.fechaInicio}"></td>
+                        <td th:text="${curso.alumnosMinimo}"></td>
+                        <td th:text="${curso.alumnosActual}"></td>
+                        <td th:text="${curso.estadoString}"></td>
+                            <td>
+                                <a th:href="@{'matricular?idCurso=' + ${curso.idCurso} }" onclick="return confirm('¿Estas seguro de registrar la matricula?');"><i class="bi bi-plus-circle"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script type="text/javascript"  src="js/jquery-4.0.0.min.js"></script>
+        <script type="text/javascript"  src="js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript"  src="js/popper.min.js"></script>
+        <script type="text/javascript"  src="js/bootstrap.min.js"></script>
+    </body>
+</html>
